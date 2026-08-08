@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barh Animal Rescue — About & Mission</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    background: #f5ead3;
+    color: #3e2918;
+    line-height: 1.65;
+  }
+  .body-content {
+    width: min(1400px, 96%);
+    margin: 24px auto;
+  }
+  .row {
+    background: #fffaf0;
+    border: 2px solid #c79545;
+    border-radius: 18px;
+    margin-bottom: 22px;
+    padding: 26px;
+    box-shadow: 0 5px 16px rgba(74, 48, 20, .12);
+  }
+  .row-title {
+    text-align: center;
+    color: #704719;
+    font-size: clamp(28px, 3vw, 42px);
+    margin: 0 auto 22px;
+    letter-spacing: 1px;
+    display: table;
+    padding: 10px 28px;
+    border: 2px solid #c79545;
+    border-radius: 12px;
+    background: linear-gradient(180deg, #fff8e8, #f7e8c7);
+    box-shadow: 0 3px 9px rgba(74, 48, 20, .10);
+  }
+  .row-title::after {
+    content: "";
+    display: block;
+    width: 120px;
+    height: 3px;
+    background: #c79545;
+    margin: 9px auto 0;
+    border-radius: 3px;
+  }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.08fr 1fr;
+    gap: 18px;
+  }
+  .two-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+  }
+  .card {
+    background: #fffdf7;
+    border: 1px solid #ddc18c;
+    border-radius: 14px;
+    padding: 22px;
+  }
+  .card h3 {
+    color: #81521e;
+    text-align: center;
+    font-size: 25px;
+    margin: 0 auto 15px;
+    padding: 8px 18px;
+    border: 1px solid #ddc18c;
+    border-radius: 9px;
+    background: #fffaf0;
+    display: table;
+  }
+  p { margin: 0 0 12px; }
+  ul {
+    margin: 8px 0 0;
+    padding-left: 24px;
+  }
+  li { margin-bottom: 8px; }
+  .support-list li strong { color: #704719; }
+  .appeal {
+    text-align: left;
+    font-size: 17px;
+  }
+  .appeal .highlight {
+    font-size: 20px;
+    font-weight: bold;
+    color: #704719;
+    background: #f7e8c7;
+    border-left: 5px solid #c79545;
+    padding: 12px 15px;
+    border-radius: 8px;
+    margin: 14px 0;
+  }
+  .way-help-wrap {
+    text-align: center;
+    margin-top: 22px;
+  }
+  .way-help {
+    display: inline-block;
+    padding: 13px 28px;
+    border-radius: 10px;
+    background: #704719;
+    color: #fffaf0;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 17px;
+    border: 1px solid #c79545;
+    box-shadow: 0 4px 10px rgba(74,48,20,.15);
+    transition: transform .2s, background .2s, box-shadow .2s;
+  }
+  .way-help:hover {
+    background: #8b5b24;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(74,48,20,.2);
+  }
+  .closing {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #704719;
+    margin-top: 16px;
+  }
+  .mission-list li, .vision-list li { margin-bottom: 13px; }
+  .quote {
+    font-style: italic;
+    text-align: center;
+    color: #80562b;
+    margin-top: 12px;
+  }
+  @media (max-width: 900px) {
+    .about-grid, .two-grid { grid-template-columns: 1fr; }
+    .row { padding: 18px; }
+  }
+
+  .social-column h3 {
+    font-size: 28px;
+    color: #704719;
+  }
+  .social-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+    color: #3e2918;
+    background: #fffaf0;
+    border: 1px solid #ddc18c;
+    border-radius: 12px;
+    padding: 12px;
+    margin: 14px 0;
+    transition: transform .2s, box-shadow .2s, background .2s;
+  }
+  .social-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 14px rgba(74,48,20,.16);
+    background: #fff6df;
+  }
+  .social-item img {
+    width: 150px;
+    height: 105px;
+    object-fit: cover;
+    border-radius: 9px;
+    border: 1px solid #c79545;
+    flex-shrink: 0;
+  }
+  .social-item strong,
+  .social-item span {
+    display: block;
+  }
+  .social-item strong {
+    color: #704719;
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+  .social-item span {
+    font-size: 15px;
+  }
+  @media (max-width: 600px) {
+    .social-item img {
+      width: 110px;
+      height: 80px;
+    }
+  }
+
+
+    /* ROW 6 — HOW YOU CAN HELP */
+    .help-intro {
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto 24px;
+      font-size: 18px;
+    }
+
+    .upi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .upi-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      background: #fffdf7;
+      border: 1px solid #ddc18c;
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .upi-card h3 {
+      color: #81521e;
+      margin: 0 0 14px;
+      font-size: 24px;
+    }
+
+    .upi-card img {
+      width: min(100%, 330px);
+      height: 330px;
+      object-fit: contain;
+      border: 1px solid #ddc18c;
+      border-radius: 10px;
+      background: #fff;
+      margin-bottom: 14px;
+    }
+
+    .upi-id {
+      width: 100%;
+      padding: 10px 8px;
+      border-radius: 8px;
+      background: #f7e8c7;
+      color: #704719;
+      font-size: 14px;
+      font-weight: bold;
+      word-break: break-all;
+      margin-bottom: 14px;
+    }
+
+    .upi-pay {
+      display: inline-block;
+      width: 100%;
+      max-width: 260px;
+      padding: 12px 18px;
+      border-radius: 9px;
+      background: #704719;
+      color: #fffaf0;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      transition: transform .2s, background .2s, box-shadow .2s;
+    }
+
+    .upi-pay:hover {
+      background: #8b5b24;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 12px rgba(74,48,20,.18);
+    }
+
+    .help-note {
+      text-align: center;
+      margin-top: 22px;
+      color: #80562b;
+      font-style: italic;
+    }
+
+    @media (max-width: 900px) {
+      .upi-grid { grid-template-columns: 1fr; }
+      .upi-card img { height: auto; max-height: 420px; }
+    }
+
+
+
+  /* FOOTER */
+  .footer-title {
+    margin-top: 0;
+    margin-bottom: 22px;
+  }
+  .site-footer {
+    width: min(1400px, 96%);
+    margin: 28px auto 0;
+  }
+
+  .footer-row {
+    display: grid;
+    grid-template-columns: 1fr 1.35fr 1fr;
+    gap: 18px;
+    background: #fffaf0;
+    border: 2px solid #c79545;
+    border-radius: 18px;
+    margin-bottom: 22px;
+    padding: 22px;
+    box-shadow: 0 5px 16px rgba(74, 48, 20, .12);
+    align-items: stretch;
+  }
+
+  .footer-column {
+    min-height: 180px;
+    background: #fffdf7;
+    border: 1px solid #ddc18c;
+    border-radius: 14px;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footer-column h3 {
+    color: #704719;
+    margin: 0 0 10px;
+    font-size: 24px;
+  }
+
+  .location-link {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    color: #3e2918;
+  }
+
+  .location-link img {
+    width: 100%;
+    max-height: 190px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #c79545;
+    display: block;
+  }
+
+  .location-link span {
+    display: block;
+    margin-top: 8px;
+    color: #704719;
+    font-weight: bold;
+  }
+
+  .address-text {
+    color: #3e2918;
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  .contact-text {
+    color: #3e2918;
+    font-size: 17px;
+    line-height: 1.9;
+  }
+
+  .contact-text strong, .address-text strong {
+    color: #704719;
+  }
+
+  .footer-row.footer-blessing {
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+  }
+
+  .namaskar img {
+    max-width: 100%;
+    width: 100%;
+    max-height: 270px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+  }
+
+  .blessing-text {
+    color: #704719;
+    font-size: clamp(25px, 3vw, 40px);
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 900px) {
+    .footer-row, .footer-row.footer-blessing {
+      grid-template-columns: 1fr;
+    }
+    .footer-column { min-height: auto; }
+    .blessing-text { white-space: normal; padding: 15px 0; }
+  }
+
+
+
+/* ================= HEADER ================= */
+.site-header{
+  width:100%;
+  margin:0 0 28px;
+  background:linear-gradient(180deg,#fff8e8 0%,#f5e5c4 100%);
+  border-top:3px solid #c79545;
+  border-bottom:3px solid #8f5b20;
+  box-shadow:0 5px 18px rgba(74,48,20,.18);
+}
+.header-top{
+  width:min(1500px,98%);
+  margin:0 auto;
+  min-height:250px;
+  display:grid;
+  grid-template-columns:1fr 1.5fr 1fr;
+  align-items:center;
+  gap:12px;
+  padding:14px 20px;
+}
+.header-cell{
+  min-height:220px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+.header-cell img{
+  display:block;
+  max-width:100%;
+  max-height:225px;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+}
+.header-cell.side img{
+  width:min(100%,330px);
+  max-height:210px;
+  border-radius:10px;
+}
+.header-cell.center img{
+  width:min(100%,760px);
+  max-height:235px;
+  border-radius:14px;
+}
+.main-nav-wrap{
+  width:100%;
+  background:linear-gradient(180deg,#751d0a 0%,#410b04 52%,#5b1307 100%);
+  border-top:2px solid #d2a34c;
+  border-bottom:2px solid #9d641d;
+}
+.main-nav{
+  width:min(1400px,96%);
+  margin:0 auto;
+  min-height:72px;
+  display:flex;
+  align-items:stretch;
+}
+.main-nav > a,
+.main-nav-item > button{
+  flex:1;
+  min-width:150px;
+  border:0;
+  border-right:1px solid rgba(221,167,72,.55);
+  background:transparent;
+  color:#fff5dc;
+  font:700 20px Georgia,"Times New Roman",serif;
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:16px 20px;
+  cursor:pointer;
+}
+.main-nav > a:hover,
+.main-nav-item > button:hover{
+  background:linear-gradient(180deg,#922c10,#510d05);
+  color:#ffd978;
+}
+.main-nav-item{
+  position:relative;
+  flex:1;
+  display:flex;
+}
+.main-nav-item > button::after{
+  content:"◆";
+  color:#e8b94d;
+  font-size:8px;
+  margin-left:12px;
+  transform:rotate(45deg);
+}
+.main-dropdown{
+  display:none;
+  position:absolute;
+  left:0;
+  top:100%;
+  min-width:260px;
+  z-index:1000;
+  background:linear-gradient(180deg,#651909,#2b0703);
+  border:2px solid #b98224;
+  border-top:0;
+  border-radius:0 0 12px 12px;
+  overflow:hidden;
+  box-shadow:0 10px 24px rgba(20,5,1,.45);
+}
+.main-nav-item.open .main-dropdown{display:block}
+.main-dropdown a{
+  display:block;
+  padding:15px 18px;
+  color:#fff0ce;
+  text-decoration:none;
+  font-size:17px;
+  border-bottom:1px solid rgba(208,145,44,.35);
+}
+.main-dropdown a:hover{
+  background:#8a2b10;
+  color:#ffd978;
+}
+
+@media(max-width:900px){
+  .header-top{
+    min-height:190px;
+    grid-template-columns:1fr 1.3fr 1fr;
+    padding:8px;
+  }
+  .header-cell{min-height:175px}
+  .header-cell img{max-height:165px}
+  .main-nav{flex-wrap:wrap}
+  .main-nav > a,.main-nav-item{flex:1 1 33.33%}
+  .main-nav > a,.main-nav-item > button{min-width:0;font-size:17px;padding:13px 8px}
+}
+@media(max-width:600px){
+  .header-top{
+    min-height:145px;
+    gap:4px;
+    padding:5px;
+  }
+  .header-cell{min-height:135px}
+  .header-cell img{max-height:125px}
+  .header-cell.side img{max-height:120px}
+  .header-cell.center img{max-height:130px}
+  .main-nav > a,.main-nav-item{flex-basis:50%}
+  .main-nav > a,.main-nav-item > button{font-size:15px;padding:12px 5px}
+  .main-dropdown{min-width:215px}
+}
+
+</style>
+
+<style>
+.row { position: relative; }
+
+.back-to-top{
+  position:absolute;
+  right:12px;
+  bottom:10px;
+  width:30px;
+  height:30px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  text-decoration:none;
+  color:#fff8cf;
+  font-size:17px;
+  font-weight:bold;
+  line-height:1;
+  background:radial-gradient(circle at 35% 30%,#fffbd0 0 8%,#f6c94f 22%,#a75a09 58%,#5b1805 100%);
+  border:1px solid #f5d77a;
+  box-shadow:
+    0 0 4px #ffe78b,
+    0 0 9px rgba(255,215,90,.9),
+    0 0 16px rgba(255,188,45,.65),
+    inset 0 0 5px rgba(255,255,220,.75);
+  animation: glitter 1.25s ease-in-out infinite;
+  z-index:5;
+}
+
+.back-to-top:hover{
+  transform:scale(1.15);
+  box-shadow:
+    0 0 6px #fff6b0,
+    0 0 14px #ffd45a,
+    0 0 24px rgba(255,185,35,.95),
+    inset 0 0 7px rgba(255,255,230,.9);
+}
+
+@keyframes glitter{
+  0%,100%{filter:brightness(1);opacity:.9}
+  45%{filter:brightness(1.65);opacity:1}
+  60%{filter:brightness(1.05);opacity:.92}
+}
+</style>
+
+</head>
+
+<body id="top">
+
+
+<!-- HEADER: ROW 1 + ROW 2 NAVIGATION -->
+<header class="site-header" id="top">
+  <div class="header-top">
+    <div class="header-cell side">
+      <img src="images/namaskar1.jpg" alt="Namaskar">
+    </div>
+    <div class="header-cell center">
+      <img src="images/Jagannath1.jpg" alt="Lord Jagannath and devotees">
+    </div>
+    <div class="header-cell side">
+      <img src="images/namaskar2.jpg" alt="Namaskar">
+    </div>
+  </div>
+
+  <div class="main-nav-wrap">
+    <nav class="main-nav" aria-label="Main navigation">
+      <div class="main-nav-item">
+        <button type="button">About</button>
+        <div class="main-dropdown">
+          <a href="#me">Me</a>
+          <a href="#rescue-journey">My Rescue Journey</a>
+          <a href="#my-situation">My Situation</a>
+        </div>
+      </div>
+
+      <a href="#my-appeal">Appeal</a>
+
+      <div class="main-nav-item">
+        <button type="button">Evidence</button>
+        <div class="main-dropdown">
+          <a href="#social-media">Social Media</a>
+        </div>
+      </div>
+
+      <a href="#site-footer">Contacts</a>
+
+      <div class="main-nav-item">
+        <button type="button">Future</button>
+        <div class="main-dropdown">
+          <a href="#mission">Mission</a>
+          <a href="#vision">Vision</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="body-content">
+
+  <!-- ROW 1 -->
+  <section class="row" id="about">
+    <h1 class="row-title">About</h1>
+
+    <div class="about-grid">
+      <article class="card" id="me">
+        <h3>Who Am I</h3>
+        <p>I am a common man from Odisha (known as the Holy Land of Lord Jagannath).</p>
+
+        <p>I am basically a technical graduate who completed B.E. in the stream of Electronics and Telecommunication at my native place.</p>
+
+        <p>I have been seeing so many ups and downs in my life regarding my career, job and other challenges after 2005.</p>
+
+        <p>Finally, I was working as a Project Engineer in a private company. My company helped me in every way to balance my situation. Here we were working for NTPC Barh, NTPC Barunei and Neo Carbons. But these works were project-oriented, which meant location instability.</p>
+      </article>
+
+      <article class="card" id="rescue-journey">
+        <h3>My Rescue Journey</h3>
+        <p>So I am professionally an Engineer but personally a compassionate rescuer and caregiver for needy living beings who are in pain in front of my sight.</p>
+
+        <p>Basically, I am living an ethical and environmental “Vegan” and “Teetotaler” lifestyle at the age of 15, without knowing these two words I mentioned.</p>
+
+        <p>From my childhood I started rescuing and caregiving street-roaming abandoned cows, male calves, poor street dogs and injured monkeys, etc. Sometimes old abandoned roadside sick people too. And all these works were spot-on treatment in general. I never ever wanted fostering and providing shelter like other rescuers do.</p>
+
+        <p>I keep on serving living beings, especially animals in most scenarios, in Angul in Odisha, Parel and Thane in Mumbai, HSR Layout in Bangalore, Safilguda in Secunderabad, Old Gajuwaka in Visakhapatnam and finally here in Barh in Bihar. By GOD's mercy, everywhere some people helped me like good companions.</p>
+
+        <p>In this journey I experienced so many tragic cases at the time of Lockdown, which taught me about street animals' lifestyles. In some cases I totally lost faith in NGOs and Rescue Centers, but have little faith in GOD and good deeds.</p>
+      </article>
+
+      <article class="card" id="my-situation">
+        <h3>My Current Situation</h3>
+        <p>In Barh, I just came to complete a project, but life placed helpless beings in my path. Faced with the choice to ignore their suffering or respond with compassion, I chose humanity.</p>
+
+        <p>Since 2020, I have been providing shelter, food, and medical care to abandoned, injured, old, and disabled street dogs. Whenever possible, I also help mentally challenged, injured, abandoned, and elderly people in my locality. What began as helping a few helpless souls has become a lifelong responsibility.</p>
+
+        <p>For over five years, I managed everything from my salary. Today I am unemployed, yet <strong>25 rescued dogs inside my shelter</strong> and <strong>around 45 street dogs outside</strong> depend on me every single day. I have not returned to my native place for more than six years because these rescued dogs know only me and wait for me.</p>
+      </article>
+    </div>
+    <a class="back-to-top" href="#top" aria-label="Back to top" title="Back to top">↑</a>
+  </section>
+
+  <!-- ROW 2 -->
+  <section class="row">
+    <h2 class="row-title">People Who Supported in This Journey</h2>
+
+    <div class="card">
+      <p>I will always remain grateful to the kind people who made this journey possible in all places. I have forgotten so many names belonging to different places. Yes, in Barh I can say...</p>
+
+      <ul class="support-list">
+        <li><strong>Dr. Mithilesh Kumar</strong> — HOD, Government Veterinary College cum Hospital, Patna, who helped with treatment without charging fees.</li>
+        <li><strong>Mr. Paramananda Yadav</strong> — Ohh My Dog Centre, Barh.</li>
+        <li><strong>Mr. Rahul Kumar</strong> — Shanti Pet Care.</li>
+        <li><strong>Jagannath Pharma</strong> and <strong>Tara Medicine Store</strong>, Barh.</li>
+        <li><strong>Some Grocery Shop Owners:</strong>
+          <ul>
+            <li>Mr. Rambharoshi Pandit</li>
+            <li>Mr. Abhay Singh</li>
+            <li>Mr. Pintu Keshari</li>
+          </ul>
+        </li>
+        <li><strong>Mr. Rajesh Singh</strong> — Shelter Owner, Barh.</li>
+        <li><strong>Volunteers Shri Aryan Rajput</strong> and <strong>Dr. Varun Sharma of Umrob Dental Clinic</strong>, who helped in difficult situations.</li>
+      </ul>
+    </div>
+  
+    <a class="back-to-top" href="#top" aria-label="Back to top" title="Back to top">↑</a>
+  </section>
+
+  <!-- ROW 3 -->
+  <section class="row" id="my-appeal">
+    <h2 class="row-title">My Appeal / Request</h2>
+
+    <div class="card appeal">
+      <p>My unavoidable expenses are around <strong>₹1,000 every day</strong> for food and medical care, along with <strong>₹4,000 monthly rent</strong> for the shelter and <strong>₹2,000 monthly rent</strong> for my room nearby.</p>
+
+      <div class="highlight">
+        With folded hands, I humbly seek your support. Every contribution, no matter how small, helps provide food, medicines, and shelter to innocent lives who have no one else to depend on.
+      </div>
+
+      <p class="closing">Your kindness is another day of life, hope, and love for them.</p>
+
+      <div class="way-help-wrap">
+        <a class="way-help" href="#help">Way to Help</a>
+      </div>
+    </div>
+  
+    <a class="back-to-top" href="#top" aria-label="Back to top" title="Back to top">↑</a>
+  </section>
+
+  <!-- ROW 4 -->
+  <section class="row" id="future">
+    <h2 class="row-title">Future</h2>
+    <div class="two-grid">
+      <article class="card" id="mission">
+        <h2 class="row-title">Mission</h2>
+        <ul class="mission-list">
+          <li><strong>Live life with Compassion</strong> — Make kindness a practical responsibility, not only an idea.</li>
+          <li><strong>Saving life of Living beings who are in pain in your close proximity area or locality at least</strong> — Stand beside animals who need care, protection and a safe future.</li>
+          <li><strong>Try to Protect the Nature</strong> — Respect the natural world and the many forms of life within it.</li>
+          <li><strong>Heal the Planet</strong> — Choose everyday actions that reduce harm and encourage responsible living.</li>
+        </ul>
+      </article>
+
+      <article class="card" id="vision">
+        <h2 class="row-title">Vision</h2>
+        <p>I want to plant the seed of compassion in everyone. I want them to care not just about the whole world, but feel responsible for helping those living in pain around them.</p>
+
+        <p>I want them to help both humans, animals and birds. If nothing else, at least give encouragement to people like us.</p>
+
+        <p class="quote">“Make compassion a practical responsibility.”</p>
+      </article>
+    </div>
+  
+    <a class="back-to-top" href="#top" aria-label="Back to top" title="Back to top">↑</a>
+  </section>
+
+  <!-- ROW 5: SOCIAL MEDIA AS EVIDENCE -->
+  <section class="row" id="social-media">
+    <h2 class="row-title">Social Media as Evidence</h2>
+
+    <div class="two-grid">
+      <article class="card social-column">
+        <h3>YOUTUBE</h3>
+
+        <a class="social-item" href="https://youtube.com/@veganrescuercaregiver?si=l9blD0Q1n_mDkpe6" target="_blank" rel="noopener noreferrer">
+          <img src="images/1000170723.jpg" alt="YouTube 1">
+          <div>
+            
+            <span>Seva: The Prime Responsibility</span>
+          </div>
+        </a>
+
+        <a class="social-item" href="https://youtube.com/@sbd_thevegan?si=8XVAm8lQZFGBPj1_" target="_blank" rel="noopener noreferrer">
+          <img src="images/1000170724.jpg" alt="YouTube 2">
+          <div>
+            
+            <span>Satya_The Caregiver</span>
+          </div>
+        </a>
+      </article>
+
+      <article class="card social-column">
+        <h3>FACEBOOK</h3>
+
+        <a class="social-item" href="https://www.facebook.com/share/19DpmQ9HpS/" target="_blank" rel="noopener noreferrer">
+          <img src="images/1000170726.jpg" alt="Facebook 1">
+          <div>
+            
+            <span>Satyabrata Das</span>
+          </div>
+        </a>
+
+        <a class="social-item" href="https://www.facebook.com/share/1He8vKi349/" target="_blank" rel="noopener noreferrer">
+          <img src="images/1000170725.jpg" alt="Facebook 2">
+          <div>
+            
+            <span>Das Satyabrata</span>
+          </div>
+        </a>
+      </article>
+    </div>
+  
+    <a class="back-to-top" href="#top" aria-label="Back to top" title="Back to top">↑</a>
+  </section>
+
+
+  <!-- ROW 6: HOW YOU CAN HELP -->
+  <section class="row" id="help">
+    <h2 class="row-title">How You Can Help</h2>
+
+    <p class="help-intro">
+      Your support can directly help provide food, medicines and shelter
+      for rescued and vulnerable living beings. You can contribute through
+      any of the UPI options below.
+    </p>
+
+    <div class="upi-grid">
+
+      <article class="upi-card">
+        <h3>Paytm</h3>
+        <img src="images/gpay.jpg" alt="Paytm UPI QR Code">
+        <div class="upi-id">8095085855@ptsbi</div>
+        <a class="upi-pay" href="upi://pay?pa=8095085855@ptsbi&amp;pn=SATYABRATA%20DAS">
+          Pay with Paytm / UPI
+        </a>
+      </article>
+
+      <article class="upi-card">
+        <h3>PhonePe</h3>
+        <img src="images/paytm.jpg" alt="PhonePe UPI QR Code">
+        <div class="upi-id">8095085855-2@ybl</div>
+        <a class="upi-pay" href="upi://pay?pa=8095085855-2@ybl&amp;pn=SATYABRATA%20DAS">
+          Pay with PhonePe / UPI
+        </a>
+      </article>
+
+      <article class="upi-card">
+        <h3>Google Pay</h3>
+        <img src="images/phonepe.jpg" alt="Google Pay UPI QR Code">
+        <div class="upi-id">satya.ece05-2@okicici</div>
+        <a class="upi-pay" href="upi://pay?pa=satya.ece05-2@okicici&amp;pn=SATYABRATA%20DAS">
+          Pay with Google Pay / UPI
+        </a>
+      </article>
+
+    </div>
+
+    <p class="help-note">
+      You may also scan the QR code using any compatible UPI app.
+    </p>
+    <a class="back-to-top" href="#top" aria-label="Back to top" title="Back to top">↑</a>
+  </section>
+
+
+
+  <!-- FOOTER -->
+  <footer class="site-footer" id="site-footer">
+
+    <!-- FOOTER ROW 1 -->
+    <h2 class="row-title footer-title">Contacts</h2>
+    <div class="footer-row" style="position:relative;">
+      <div class="footer-column">
+        <a class="location-link" href="https://share.google/GNFGCzCt32TQS5kH1" target="_blank" rel="noopener noreferrer">
+          <img src="images/Location.jpg" alt="Barh Animal Rescue Location">
+          <span>📍 View Location on Map</span>
+        </a>
+</div>
+
+      <div class="footer-column">
+        <div class="address-text">
+          <h3>Address</h3>
+          Behind RK Motors and Chandan Lai Bhandar, Opposite Navina Vatika, NH31, Kazi Chowk, Near HP Petrol Pump, PIN: 803213, Barh, Patna, Bihar.
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <div class="contact-text">
+          <p><strong>Email:</strong><br>satya.ece05@gmail.com</p>
+          <p><strong>Mobile No:</strong><br>+91-8095085855</p>
+        </div>
+      </div>
+      <a class="back-to-top" href="#top" aria-label="Back to top" title="Back to top">↑</a>
+    </div>
+
+    <!-- FOOTER ROW 2 -->
+    <div class="footer-row footer-blessing">
+      <div class="footer-column namaskar">
+        <img src="images/namaskar1.jpg" alt="Namaskar greeting">
+</div>
+
+      <div class="footer-column">
+        <div class="blessing-text">ॐ शांतिः शांतिः शांतिः
+</div>
+      </div>
+
+      <div class="footer-column namaskar">
+        <img src="images/namaskar2.jpg" alt="Namaskar greeting">
+      </div>
+    </div>
+
+  </footer>
+
+</main>
+
+<script>
+document.querySelectorAll('.main-nav-item > button').forEach(function(button){
+  button.addEventListener('click', function(event){
+    event.stopPropagation();
+    var current = this.parentElement;
+    document.querySelectorAll('.main-nav-item').forEach(function(item){
+      if(item !== current) item.classList.remove('open');
+    });
+    current.classList.toggle('open');
+  });
+});
+
+document.querySelectorAll('.main-dropdown a').forEach(function(link){
+  link.addEventListener('click', function(){
+    document.querySelectorAll('.main-nav-item').forEach(function(item){
+      item.classList.remove('open');
+    });
+  });
+});
+
+document.addEventListener('click', function(){
+  document.querySelectorAll('.main-nav-item').forEach(function(item){
+    item.classList.remove('open');
+  });
+});
+</script>
+
+</body>
+</html>
