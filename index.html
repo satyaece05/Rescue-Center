@@ -828,9 +828,188 @@ body { position:relative; }
 .gallery-item figcaption{padding:7px;text-align:center;font-size:.85rem}
 </style>
 
+<style id="tale-mobile-back-to-top-fix">
+@media (max-width: 767px) {
+  #tales-of-tail .back-to-top { display: none !important; }
+}
+</style>
+
+<style id="gallery-zoom-style">
+.gallery-item img { cursor: zoom-in; }
+.gallery-zoom-overlay {
+  position: fixed; inset: 0; z-index: 10000;
+  display: none; align-items: center; justify-content: center;
+  background: rgba(0,0,0,.88); padding: 70px 20px 30px;
+  box-sizing: border-box;
+}
+.gallery-zoom-overlay.open { display: flex; }
+.gallery-zoom-stage {
+  width: 100%; height: 100%; display: flex;
+  align-items: center; justify-content: center; overflow: hidden;
+}
+.gallery-zoom-image {
+  max-width: 95%; max-height: 92%; width: auto; height: auto;
+  object-fit: contain; transform: scale(1);
+  transition: transform .18s ease; cursor: grab; user-select: none;
+}
+.gallery-zoom-image:active { cursor: grabbing; }
+.gallery-zoom-controls {
+  position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 8px; align-items: center; z-index: 10002;
+}
+.gallery-zoom-controls button {
+  border: 0; border-radius: 999px; min-width: 44px; height: 44px;
+  padding: 0 14px; font-size: 20px; font-weight: 700; cursor: pointer;
+  background: #fff; color: #3d2a12; box-shadow: 0 3px 12px rgba(0,0,0,.35);
+}
+.gallery-zoom-close {
+  position: absolute; right: 14px; top: 14px; z-index: 10002;
+  width: 44px; height: 44px; border: 0; border-radius: 50%;
+  background: #fff; color: #222; font-size: 26px; font-weight: 700; cursor: pointer;
+  box-shadow: 0 3px 12px rgba(0,0,0,.35);
+}
+.gallery-zoom-caption {
+  position: absolute; left: 50%; bottom: 12px; transform: translateX(-50%);
+  max-width: 90%; color: #fff; text-align: center; font-weight: 700;
+  text-shadow: 0 2px 5px #000; pointer-events: none;
+}
+@media (max-width: 600px) {
+  .gallery-zoom-overlay { padding: 68px 8px 42px; }
+  .gallery-zoom-image { max-width: 98%; max-height: 90%; }
+  .gallery-zoom-controls button, .gallery-zoom-close { min-width: 42px; width: 42px; height: 42px; padding: 0; }
+}
+</style>
+
 <style id="visitor-counter-style">
 .visitor-counter{position:fixed;right:12px;top:245px;z-index:2500;font-size:12px;font-weight:700;text-align:center;padding:4px 8px;color:#5a3b12;background:rgba(255,248,230,.92);border:1px solid rgba(120,80,20,.25);border-radius:999px;box-shadow:0 2px 8px rgba(0,0,0,.12);pointer-events:none;white-space:nowrap}
 #visitor-count{font-variant-numeric:tabular-nums}
+</style>
+
+<style id="tale-of-tails-responsive-fix">
+/* Tale of Tails — responsive layout only. Does not change Gallery or other pages. */
+#tales-of-tail {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+#tales-of-tail .card {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+#tales-of-tail .tale-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: stretch;
+}
+
+#tales-of-tail .tale-card {
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+  background: #fffaf0;
+  border: 1px solid #ddc18c;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(74,48,20,.12);
+}
+
+#tales-of-tail .tale-card > a {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  color: inherit;
+  text-decoration: none;
+}
+
+#tales-of-tail .tale-card img {
+  display: block;
+  width: 100%;
+  height: 260px;
+  max-width: 100%;
+  object-fit: cover;
+  object-position: center;
+  background: #eee4d0;
+}
+
+#tales-of-tail .tale-card h3 {
+  margin: 16px 16px 8px;
+  color: #704719;
+  font-size: clamp(20px, 2vw, 27px);
+  line-height: 1.25;
+  text-align: center;
+}
+
+#tales-of-tail .tale-card p {
+  margin: 0 16px 14px;
+  color: #3e2918;
+  font-size: clamp(14px, 1.3vw, 17px);
+  line-height: 1.55;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+#tales-of-tail .tale-card .tale-read {
+  display: block;
+  width: fit-content;
+  max-width: calc(100% - 32px);
+  margin: auto auto 18px;
+  padding: 10px 16px;
+  box-sizing: border-box;
+  border-radius: 9px;
+  background: #704719;
+  color: #fffaf0;
+  border: 1px solid #c79545;
+  font-weight: 700;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+#tales-of-tail .tale-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 18px rgba(74,48,20,.18);
+}
+
+@media (max-width: 900px) {
+  #tales-of-tail .tale-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+  #tales-of-tail .tale-card img { height: 230px; }
+}
+
+@media (max-width: 600px) {
+  #tales-of-tail {
+    width: 100%;
+  }
+  #tales-of-tail .card {
+    padding: 14px;
+  }
+  #tales-of-tail .tale-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  #tales-of-tail .tale-card img {
+    height: auto;
+    max-height: 420px;
+    object-fit: contain;
+  }
+  #tales-of-tail .tale-card h3 {
+    font-size: 22px;
+  }
+  #tales-of-tail .tale-card p {
+    font-size: 15px;
+  }
+}
 </style>
 </head>
 <body id="top">
@@ -1194,6 +1373,68 @@ body { position:relative; }
     .catch(function(){
       counter.textContent = '—';
     });
+})();
+</script>
+<div id="galleryZoomOverlay" class="gallery-zoom-overlay" role="dialog" aria-modal="true" aria-label="Gallery image viewer">
+  <button id="galleryZoomClose" class="gallery-zoom-close" type="button" aria-label="Close image viewer">×</button>
+  <div class="gallery-zoom-controls" aria-label="Zoom controls">
+    <button id="galleryZoomOut" type="button" aria-label="Zoom out">−</button>
+    <button id="galleryZoomReset" type="button" aria-label="Reset zoom">100%</button>
+    <button id="galleryZoomIn" type="button" aria-label="Zoom in">+</button>
+  </div>
+  <div class="gallery-zoom-stage">
+    <img id="galleryZoomImage" class="gallery-zoom-image" alt="">
+  </div>
+  <div id="galleryZoomCaption" class="gallery-zoom-caption"></div>
+</div>
+<script id="gallery-zoom-script">
+(function(){
+  const overlay = document.getElementById('galleryZoomOverlay');
+  const image = document.getElementById('galleryZoomImage');
+  const caption = document.getElementById('galleryZoomCaption');
+  const close = document.getElementById('galleryZoomClose');
+  const zoomIn = document.getElementById('galleryZoomIn');
+  const zoomOut = document.getElementById('galleryZoomOut');
+  const reset = document.getElementById('galleryZoomReset');
+  if (!overlay || !image) return;
+  let scale = 1;
+  function render(){
+    image.style.transform = 'scale(' + scale + ')';
+    reset.textContent = Math.round(scale * 100) + '%';
+  }
+  function setScale(next){
+    scale = Math.max(1, Math.min(4, next));
+    render();
+  }
+  function open(img){
+    image.src = img.currentSrc || img.src;
+    image.alt = img.alt || '';
+    const fig = img.closest('figure');
+    caption.textContent = fig ? (fig.querySelector('figcaption')?.textContent || '') : (img.alt || '');
+    setScale(1);
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function hide(){
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+    image.src = '';
+  }
+  document.querySelectorAll('#gallery .gallery-item img').forEach(function(img){
+    img.addEventListener('click', function(){ open(this); });
+  });
+  zoomIn.addEventListener('click', function(e){ e.stopPropagation(); setScale(scale + .25); });
+  zoomOut.addEventListener('click', function(e){ e.stopPropagation(); setScale(scale - .25); });
+  reset.addEventListener('click', function(e){ e.stopPropagation(); setScale(1); });
+  close.addEventListener('click', hide);
+  overlay.addEventListener('click', function(e){ if (e.target === overlay || e.target.classList.contains('gallery-zoom-stage')) hide(); });
+  document.addEventListener('keydown', function(e){
+    if (!overlay.classList.contains('open')) return;
+    if (e.key === 'Escape') hide();
+    if (e.key === '+' || e.key === '=') setScale(scale + .25);
+    if (e.key === '-') setScale(scale - .25);
+    if (e.key === '0') setScale(1);
+  });
 })();
 </script>
 <div class="visitor-counter" aria-label="Website visitor counter">👣 Visitors: <span id="visitor-count">Loading…</span></div>
