@@ -1189,6 +1189,34 @@ body { position:relative; }
     </a>
   </article>
 
+
+  <article class="tale-card">
+    <a href="Kalu.pdf" target="_blank" rel="noopener noreferrer" aria-label="Read the Kalu story">
+      <img src="Kalu.jpg" alt="Kalu — Tale of Tails">
+      <h3>Kalu</h3>
+      <p>A story of rescue, love, care and companionship.</p>
+      <span class="tale-read">📖 Read the Story</span>
+    </a>
+  </article>
+
+  <article class="tale-card">
+    <a href="Pikku.pdf" target="_blank" rel="noopener noreferrer" aria-label="Read the Pikku story">
+      <img src="Pikku.jpg" alt="Pikku — Tale of Tails">
+      <h3>Pikku</h3>
+      <p>A heartfelt story of care, companionship and rescue.</p>
+      <span class="tale-read">📖 Read the Story</span>
+    </a>
+  </article>
+
+  <article class="tale-card">
+    <a href="Supportr.pdf" target="_blank" rel="noopener noreferrer" aria-label="Read the Supporter story">
+      <img src="Supporter.jpg" alt="Supporter — Tale of Tails">
+      <h3>Supporter</h3>
+      <p>A story celebrating the kindness that makes rescue work possible.</p>
+      <span class="tale-read">📖 Read the Story</span>
+    </a>
+  </article>
+
 </div>
 </article>
 <a aria-label="Back to top" class="back-to-top" href="#top" title="Back to top">↑</a>
@@ -1218,6 +1246,9 @@ body { position:relative; }
   <figure class="gallery-item"><img src="Oscar.jpg" alt="Oscar"><figcaption>Oscar</figcaption></figure>
   <figure class="gallery-item"><img src="Kali.jpg" alt="Kali"><figcaption>Kali</figcaption></figure>
   <figure class="gallery-item"><img src="Baner.jpg" alt="Baner"><figcaption>Baner</figcaption></figure>
+  <figure class="gallery-item"><img src="PP..jpg" alt="PP"><figcaption>PP</figcaption></figure>
+  <figure class="gallery-item"><img src="PP2.jpg" alt="PP2"><figcaption>PP2</figcaption></figure>
+  <figure class="gallery-item"><img src="PP3.jpg" alt="PP3"><figcaption>PP3</figcaption></figure>
 </div>
 
 <a aria-label="Back to top" class="back-to-top" href="#top" title="Back to top">↑</a>
@@ -1441,6 +1472,31 @@ body { position:relative; }
 <!-- Mobile-only Back to Top button -->
 <button id="mobileBackToTop" class="mobile-back-to-top" type="button"
         aria-label="Back to top">↑</button>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('#gallery .gallery-item img').forEach(function (img) {
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', function () {
+      const choice = window.confirm(
+        'What would you like to do?\n\nOK = View Full Size\nCancel = Download'
+      );
+
+      if (choice) {
+        window.open(img.src, '_blank', 'noopener,noreferrer');
+      } else {
+        const link = document.createElement('a');
+        link.href = img.src;
+        link.download = img.src.split('/').pop();
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+      }
+    });
+  });
+});
+</script>
 
 </body>
 </html>
