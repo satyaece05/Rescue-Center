@@ -2075,6 +2075,11 @@ body::before{
 #tales-of-tail .back-to-top{display:flex !important;position:absolute !important;right:12px !important;bottom:10px !important;width:38px !important;height:38px !important;z-index:20 !important}
 @media (max-width:700px){#tales-of-tail .back-to-top{display:flex !important;right:8px !important;bottom:8px !important;width:38px !important;height:38px !important}.appeal-donor-card{width:100%}}
 </style>
+<style id="rescue-story-back-to-top-end-fix">
+#tales-of-tail .rescue-story-back-top-wrap{display:flex !important;justify-content:flex-end !important;align-items:center !important;width:100% !important;margin:28px 0 0 !important;padding:0 !important;position:static !important;clear:both !important;}
+#tales-of-tail .rescue-story-back-top-wrap .back-to-top{position:static !important;display:flex !important;flex:0 0 auto !important;width:38px !important;height:38px !important;margin:0 !important;}
+@media (max-width:700px){#tales-of-tail .rescue-story-back-top-wrap{margin-top:22px !important;}}
+</style>
 </head>
 <body id="top">
 <!-- HEADER: ROW 1 + ROW 2 NAVIGATION -->
@@ -2463,7 +2468,7 @@ body::before{
 
 </div>
 </article>
-<a aria-label="Back to top" class="back-to-top" href="#top" title="Back to top">↑</a>
+<div class="rescue-story-back-top-wrap"><a aria-label="Back to top" class="back-to-top" href="#top" title="Back to top">↑</a></div>
 </section></template><template id="tpl-gallery-shelter"><section class="row dynamic-section" id="gallery-shelter">
 <h2 class="row-title">In Shelter</h2>
 <article class="card gallery-page-card">
