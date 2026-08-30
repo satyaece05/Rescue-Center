@@ -2111,6 +2111,617 @@ body::before{
 #tales-of-tail .rescue-story-back-top-wrap .back-to-top{position:static !important;display:flex !important;flex:0 0 auto !important;width:38px !important;height:38px !important;margin:0 !important;}
 @media (max-width:700px){#tales-of-tail .rescue-story-back-top-wrap{margin-top:22px !important;}}
 </style>
+
+<style id="tricolor-india-theme">
+/* =========================================================
+   TRICOLOUR INDIA THEME
+   Header = Saffron | Body = White | Footer = Green
+   Navy blue is used only as a refined Ashoka Chakra/nav accent.
+   ========================================================= */
+
+:root{
+  --india-saffron:#FF9933;
+  --india-white:#FFFFFF;
+  --india-green:#138808;
+  --india-navy:#000080;
+  --india-ink:#17351d;
+  --india-soft-saffron:#fff4e8;
+  --india-soft-green:#eef8ee;
+}
+
+/* ---------- HEADER : SAFFRON ---------- */
+.site-header{
+  background:
+    radial-gradient(circle at 50% 15%,rgba(255,255,255,.34),transparent 38%),
+    linear-gradient(180deg,#ffad52 0%,#ff9933 55%,#e98722 100%) !important;
+  border-top:0 !important;
+  border-bottom:4px solid var(--india-navy) !important;
+  box-shadow:0 7px 24px rgba(0,0,0,.20) !important;
+}
+
+/* Keep the existing header artwork clearly visible */
+.header-banner-wrap{
+  background:
+    linear-gradient(180deg,rgba(255,153,51,.20),rgba(255,153,51,.10)),
+    #ff9933 !important;
+  border-bottom:2px solid rgba(0,0,128,.55) !important;
+}
+
+/* Header quote becomes the white band */
+.header-quote{
+  color:#17351d !important;
+  background:
+    linear-gradient(90deg,#fff,#fffdfb,#fff) !important;
+  border-top:2px solid rgba(0,0,128,.22) !important;
+  border-bottom:2px solid rgba(19,136,8,.30) !important;
+  text-shadow:none !important;
+}
+
+/* ---------- NAVIGATION : NAVY / CHAKRA ACCENT ---------- */
+.main-nav-wrap{
+  background:
+    linear-gradient(135deg,#000080 0%,#071b8f 48%,#000064 100%) !important;
+  border-top:2px solid #ff9933 !important;
+  border-bottom:2px solid #138808 !important;
+  box-shadow:0 5px 18px rgba(0,0,70,.28) !important;
+}
+
+.main-nav > a,
+.main-nav-item > button{
+  color:#fff !important;
+  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.015)) !important;
+  border-right:1px solid rgba(255,255,255,.20) !important;
+}
+
+.main-nav > a:hover,
+.main-nav-item > button:hover,
+.main-nav .dynamic-nav.active{
+  color:#fff !important;
+  background:
+    linear-gradient(180deg,rgba(255,153,51,.34),rgba(19,136,8,.28)) !important;
+  text-shadow:0 1px 7px rgba(0,0,0,.35);
+}
+
+.main-nav > a::before,
+.main-nav-item > button::before{
+  background:linear-gradient(90deg,transparent,#ff9933,#fff,#138808,transparent) !important;
+}
+
+/* ---------- BODY : CLEAN WHITE ---------- */
+body{
+  background:
+    linear-gradient(180deg,#ffffff 0%,#ffffff 72%,#f5fbf5 100%) !important;
+  color:var(--india-ink) !important;
+}
+
+body::before{
+  opacity:.10 !important;
+  background-image:
+    radial-gradient(rgba(19,136,8,.18) .65px,transparent .65px) !important;
+  background-size:20px 20px !important;
+}
+
+.body-content{
+  background:
+    linear-gradient(180deg,
+      rgba(255,153,51,.055) 0%,
+      rgba(255,255,255,.98) 9%,
+      rgba(255,255,255,.98) 88%,
+      rgba(19,136,8,.055) 100%) !important;
+  scrollbar-color:#138808 transparent !important;
+}
+
+.body-content::-webkit-scrollbar-thumb{
+  background:linear-gradient(#ff9933,#138808) !important;
+}
+
+/* Tricolour accent on every main content section */
+.row{
+  background:
+    linear-gradient(145deg,#fff,#fff) !important;
+  border:1px solid rgba(0,0,128,.16) !important;
+  box-shadow:0 12px 30px rgba(0,0,0,.09) !important;
+}
+
+.row::before{
+  height:5px !important;
+  background:
+    linear-gradient(90deg,
+      var(--india-saffron) 0%,
+      var(--india-saffron) 33.33%,
+      #fff 33.33%,
+      #fff 66.66%,
+      var(--india-green) 66.66%,
+      var(--india-green) 100%) !important;
+}
+
+.row-title{
+  color:var(--india-navy) !important;
+  background:linear-gradient(180deg,#fff,#f9fcff) !important;
+  border-color:rgba(0,0,128,.24) !important;
+}
+
+.row-title::before{
+  color:var(--india-saffron) !important;
+}
+
+.row-title::after{
+  background:
+    linear-gradient(90deg,
+      transparent,
+      var(--india-saffron) 30%,
+      var(--india-navy) 50%,
+      var(--india-green) 70%,
+      transparent) !important;
+}
+
+/* Cards */
+.card,.upi-card,.social-item,.tale-card,.gallery-item,.footer-column{
+  background:#fff !important;
+  border-color:rgba(19,136,8,.20) !important;
+  box-shadow:0 7px 20px rgba(0,0,0,.075) !important;
+}
+
+.card:hover{
+  border-color:rgba(255,153,51,.65) !important;
+}
+
+.card h3,.upi-card h3{
+  color:var(--india-navy) !important;
+}
+
+/* Highlights */
+.appeal .highlight{
+  background:
+    linear-gradient(100deg,#fff4e8,#fff) !important;
+  border-left-color:var(--india-saffron) !important;
+}
+
+.quote{
+  background:
+    linear-gradient(135deg,#fff8ef,#ffffff 52%,#f3fbf3) !important;
+  box-shadow:inset 0 0 0 1px rgba(0,0,128,.12) !important;
+}
+
+.quote::before,.quote::after{
+  color:var(--india-saffron) !important;
+}
+
+/* Buttons */
+.way-help,.upi-pay,.tale-card .tale-read{
+  background:
+    linear-gradient(135deg,#ff9933 0%,#e67f18 48%,#138808 100%) !important;
+  border:1px solid rgba(0,0,128,.35) !important;
+  color:#fff !important;
+  box-shadow:0 7px 17px rgba(0,0,0,.16) !important;
+}
+
+.way-help:hover,.upi-pay:hover,.tale-card .tale-read:hover{
+  background:
+    linear-gradient(135deg,#ffad52 0%,#ff9933 45%,#138808 100%) !important;
+}
+
+/* Payment / gallery accents */
+.payment-mobile-only{
+  background:linear-gradient(135deg,#fff5e9,#ffffff) !important;
+  border-color:rgba(255,153,51,.55) !important;
+  color:var(--india-navy) !important;
+}
+
+.upi-card::before{
+  background:
+    linear-gradient(90deg,var(--india-saffron),#fff,var(--india-green)) !important;
+}
+
+.gallery-item:hover{
+  box-shadow:0 13px 28px rgba(0,0,0,.14) !important;
+}
+
+/* ---------- FOOTER : GREEN ---------- */
+.site-footer{
+  background:
+    radial-gradient(circle at 50% 0%,rgba(255,255,255,.14),transparent 42%),
+    linear-gradient(180deg,#1aa10d 0%,#138808 55%,#0b6e05 100%) !important;
+  border-top:4px solid var(--india-saffron) !important;
+  box-shadow:0 -8px 24px rgba(0,80,0,.24) !important;
+}
+
+.footer-blessing-fixed .blessing-text{
+  color:#fff !important;
+  text-shadow:0 2px 7px rgba(0,0,0,.30) !important;
+}
+
+.footer-image img{
+  filter:drop-shadow(0 3px 7px rgba(0,0,0,.22));
+}
+
+/* Footer's small visitor counter */
+.visitor-counter{
+  color:rgba(0,0,128,.75) !important;
+  background:rgba(255,255,255,.88) !important;
+  border-color:rgba(0,0,128,.18) !important;
+}
+
+/* ---------- MOBILE POLISH ---------- */
+@media(max-width:700px){
+  .site-header{
+    border-bottom-width:3px !important;
+  }
+
+  .main-nav-wrap{
+    border-top-width:1px !important;
+    border-bottom-width:2px !important;
+  }
+
+  .row{
+    box-shadow:0 8px 22px rgba(0,0,0,.08) !important;
+  }
+
+  .row::before{
+    height:4px !important;
+  }
+
+  .site-footer{
+    border-top-width:3px !important;
+  }
+}
+</style>
+
+
+<style id="about-reader-enhancement">
+/* =========================================================
+   ABOUT PAGE — STORYTELLING / READER EXPERIENCE
+   Content is unchanged; this only improves presentation.
+   ========================================================= */
+
+.about-story-page{
+  max-width:1120px !important;
+  padding:24px 18px 60px !important;
+}
+
+/* Hero becomes a welcoming "cover" for the story */
+.about-hero{
+  padding:42px 28px 36px !important;
+  margin-bottom:28px !important;
+  border:1px solid rgba(0,0,128,.18) !important;
+  border-radius:26px !important;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(255,153,51,.18),transparent 42%),
+    linear-gradient(135deg,#fffaf5 0%,#fff 52%,#f3faf3 100%) !important;
+  box-shadow:0 14px 38px rgba(0,0,0,.10) !important;
+}
+
+.about-hero-badge{
+  color:#138808 !important;
+  letter-spacing:2.2px !important;
+}
+
+.about-hero-title{
+  color:#000080 !important;
+  letter-spacing:.3px;
+  text-shadow:0 2px 12px rgba(0,0,128,.08);
+}
+
+.about-hero-lead{
+  color:#405448 !important;
+  max-width:820px !important;
+  font-size:1.08rem !important;
+}
+
+.about-hero-line{
+  width:120px !important;
+  height:5px !important;
+  background:linear-gradient(90deg,#ff9933 0 33.33%,#000080 33.33% 66.66%,#138808 66.66% 100%) !important;
+}
+
+/* Three main chapters feel like a journey */
+.about-story-card{
+  border:1px solid rgba(0,0,128,.12) !important;
+  border-radius:22px !important;
+  padding:32px clamp(20px,4vw,46px) !important;
+  margin:26px 0 !important;
+  box-shadow:0 12px 32px rgba(0,0,0,.075) !important;
+  background:#fff !important;
+}
+
+.about-story-card:before{
+  width:6px !important;
+  background:linear-gradient(180deg,#ff9933 0 33%,#fff 33% 66%,#138808 66% 100%) !important;
+}
+
+/* Chapter heading */
+.about-section-heading{
+  margin-bottom:24px !important;
+  padding-bottom:15px;
+  border-bottom:1px solid rgba(0,0,128,.10);
+}
+
+.about-number{
+  flex-basis:58px !important;
+  height:58px !important;
+  border-radius:50% !important;
+  background:
+    radial-gradient(circle,#fff 0 27%,transparent 28%),
+    repeating-conic-gradient(#000080 0deg 8deg,#fff 8deg 15deg) !important;
+  color:#000080 !important;
+  border:3px solid #000080;
+  box-shadow:0 5px 16px rgba(0,0,128,.18) !important;
+  position:relative;
+}
+
+.about-kicker{
+  color:#138808 !important;
+}
+
+.about-section-heading h2{
+  color:#000080 !important;
+}
+
+/* Paragraph reading rhythm */
+.about-story-card p{
+  font-size:1.02rem;
+  line-height:1.82 !important;
+  color:#26372b;
+  margin-bottom:17px !important;
+}
+
+/* Important sentences stand out without looking aggressive */
+.about-emphasis{
+  padding:12px 16px;
+  margin:18px 0 !important;
+  border-left:4px solid #ff9933;
+  border-radius:0 10px 10px 0;
+  background:linear-gradient(90deg,#fff5e9,#fff);
+  color:#000080 !important;
+}
+
+/* Quote cards */
+.about-quote{
+  background:linear-gradient(135deg,#fff7ee,#fff 55%,#f3faf3) !important;
+  border:1px solid rgba(0,0,128,.13) !important;
+  border-left:5px solid #ff9933 !important;
+  box-shadow:0 8px 20px rgba(0,0,0,.055);
+}
+
+.about-quote>strong{
+  color:#000080 !important;
+}
+
+.about-quote-mark{
+  color:#ff9933 !important;
+}
+
+/* Heartfelt belief */
+.about-highlight{
+  background:
+    linear-gradient(100deg,#fff5e9 0%,#fff 50%,#f2faf2 100%) !important;
+  border-left:5px solid #138808 !important;
+  box-shadow:0 8px 20px rgba(19,136,8,.07);
+}
+
+.about-highlight-icon{
+  color:#ff9933 !important;
+}
+
+/* Subheadings become clear reading landmarks */
+.about-subsection{
+  margin-top:32px !important;
+  padding-top:26px !important;
+  border-top:1px dashed rgba(0,0,128,.18) !important;
+}
+
+.about-subsection h3{
+  display:inline-block;
+  color:#000080 !important;
+  font-size:1.38rem !important;
+  padding:7px 15px;
+  margin-bottom:17px !important;
+  border-left:4px solid #ff9933;
+  border-radius:0 9px 9px 0;
+  background:linear-gradient(90deg,#fff5e9,#fff);
+}
+
+/* Current situation statistics */
+.about-stat-grid{
+  gap:14px !important;
+  margin:28px 0 !important;
+}
+
+.about-stat{
+  position:relative;
+  overflow:hidden;
+  min-height:125px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  background:linear-gradient(160deg,#fff,#f5fbf5) !important;
+  border:1px solid rgba(19,136,8,.20) !important;
+  box-shadow:0 7px 18px rgba(0,0,0,.06);
+}
+
+.about-stat:nth-child(1)::before,
+.about-stat:nth-child(2)::before{
+  background:#ff9933;
+}
+.about-stat:nth-child(3)::before,
+.about-stat:nth-child(4)::before{
+  background:#138808;
+}
+
+.about-stat::before{
+  content:"";
+  position:absolute;
+  left:0;right:0;top:0;
+  height:4px;
+}
+
+.about-stat strong{
+  color:#000080 !important;
+  font-size:1.7rem !important;
+}
+
+/* Animals quote gets a special emotional pause */
+.about-animals{
+  border:1px solid rgba(19,136,8,.20) !important;
+  border-top:5px solid #138808 !important;
+  background:linear-gradient(135deg,#f4fbf4,#fff) !important;
+  padding:25px 22px !important;
+}
+
+.about-animals>strong{
+  color:#000080 !important;
+}
+
+/* Food list — easier to scan */
+.about-food{
+  background:linear-gradient(135deg,#fff8f0,#f7fcf7) !important;
+  border:1px solid rgba(0,0,128,.12) !important;
+}
+
+.about-food li::marker{
+  color:#138808;
+}
+
+/* Financial note */
+.about-money-note{
+  background:
+    linear-gradient(110deg,#000080 0%,#061b72 55%,#138808 100%) !important;
+  border-top:4px solid #ff9933;
+  box-shadow:0 10px 24px rgba(0,0,80,.18);
+}
+
+.about-money-note strong{
+  color:#ffd49e !important;
+}
+
+/* Work availability cards */
+.about-time-grid div{
+  background:linear-gradient(135deg,#fff6eb,#f6fbf6) !important;
+  border-color:rgba(0,0,128,.14) !important;
+}
+
+.about-time-grid div:first-child{
+  border-top:4px solid #ff9933;
+}
+.about-time-grid div:last-child{
+  border-top:4px solid #138808;
+}
+
+/* Final personal section */
+.about-why{
+  position:relative;
+  padding:30px 25px 12px !important;
+  border:1px solid rgba(0,0,128,.12) !important;
+  border-radius:18px;
+  background:linear-gradient(135deg,#fffaf5,#fff,#f5fbf5);
+}
+
+.about-why h3{
+  margin-top:0 !important;
+}
+
+.about-closing{
+  text-align:center;
+  margin:25px auto !important;
+  padding:20px 18px;
+  max-width:720px;
+  border-radius:15px;
+  background:
+    linear-gradient(100deg,#fff3e5,#fff,#eef9ee);
+  border-top:2px solid #ff9933;
+  border-bottom:2px solid #138808;
+  color:#000080 !important;
+  font-size:1.25rem !important;
+}
+
+/* Signature feels like the end of a personal letter */
+.about-signature{
+  margin-top:30px !important;
+  padding-top:22px !important;
+  text-align:right;
+  border-top:1px solid rgba(0,0,128,.16) !important;
+}
+
+.about-signature strong{
+  color:#000080 !important;
+  font-size:1.65rem !important;
+}
+
+/* Desktop reading width */
+@media(min-width:901px){
+  .about-story-card p,
+  .about-subsection{
+    max-width:980px;
+  }
+}
+
+/* Mobile: comfortable reading, no cramped decoration */
+@media(max-width:700px){
+  .about-story-page{
+    padding:10px 8px 38px !important;
+  }
+
+  .about-hero{
+    padding:29px 16px 25px !important;
+    border-radius:19px !important;
+  }
+
+  .about-hero-title{
+    font-size:2.15rem !important;
+  }
+
+  .about-hero-lead{
+    font-size:.94rem !important;
+  }
+
+  .about-story-card{
+    padding:24px 17px !important;
+    margin:17px 0 !important;
+    border-radius:17px !important;
+  }
+
+  .about-section-heading{
+    align-items:flex-start !important;
+  }
+
+  .about-number{
+    flex-basis:45px !important;
+    height:45px !important;
+    border-width:2px;
+  }
+
+  .about-story-card p{
+    font-size:.96rem !important;
+    line-height:1.75 !important;
+  }
+
+  .about-subsection{
+    padding-top:21px !important;
+    margin-top:25px !important;
+  }
+
+  .about-subsection h3{
+    font-size:1.14rem !important;
+  }
+
+  .about-stat{
+    min-height:105px;
+  }
+
+  .about-stat strong{
+    font-size:1.38rem !important;
+  }
+
+  .about-closing{
+    font-size:1.08rem !important;
+  }
+
+  .about-signature{
+    text-align:center;
+  }
+}
+</style>
+
 </head>
 <body id="top">
 <!-- HEADER: ROW 1 + ROW 2 NAVIGATION -->
