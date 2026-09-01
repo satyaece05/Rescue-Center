@@ -2932,7 +2932,7 @@ body::before{
 </div>
 </div>
 <div class="appeal-donor-card">
-  <a href="Doner.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open Doner List">
+  <a href="DonerList.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open Doner List">
     <img src="Doner List.jpg" alt="Doner List">
     <span>📜 Doner List</span>
   </a>
@@ -3088,6 +3088,24 @@ body::before{
       <img src="SM.jpg" alt="Sick Youngman — Unforgettable Rescue Story">
       <h3>Sick Youngman</h3>
       <p>An unforgettable rescue story of humanity, healing and compassionate care.</p>
+      <span class="tale-read">📖 Read the Story</span>
+    </a>
+  </article>
+
+  <article class="tale-card">
+    <a href="Angul.pdf" target="_blank" rel="noopener noreferrer" aria-label="Read the Angul story">
+      <img src="Angul.jpg" alt="Angul — Rescue Stories">
+      <h3>Angul</h3>
+      <p>A personal journey from Angul and the beginning of a lifelong connection with animals and compassionate service.</p>
+      <span class="tale-read">📖 Read the Story</span>
+    </a>
+  </article>
+
+  <article class="tale-card">
+    <a href="Visakhapatnam.pdf" target="_blank" rel="noopener noreferrer" aria-label="Read the Visakhapatnam story">
+      <img src="Visakhapatnam.jpg" alt="Visakhapatnam — Rescue Stories">
+      <h3>Visakhapatnam</h3>
+      <p>A memorable chapter of life, work and experiences from Visakhapatnam.</p>
       <span class="tale-read">📖 Read the Story</span>
     </a>
   </article>
@@ -3591,113 +3609,132 @@ document.addEventListener('DOMContentLoaded', function () {
 <style id="requested-rescue-links">
   #tales-of-tail .tale-card a { cursor:pointer; }
   #tales-of-tail .rescue-story-back-top {
-    position: absolute;
-    right: 14px;
-    bottom: 14px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 120px;
-    padding: 9px 14px;
-    border-radius: 999px;
-    background: linear-gradient(135deg,#7b220b,#4d0d05);
-    color:#fffaf0;
-    border:1px solid #d2a34c;
-    text-decoration:none;
-    font-weight:700;
-    box-shadow:0 7px 16px rgba(76,19,5,.20);
-    z-index:10;
+    position: absolute; right:14px; bottom:14px; display:inline-flex;
+    align-items:center; justify-content:center; min-width:120px; padding:9px 14px;
+    border-radius:999px; background:linear-gradient(135deg,#7b220b,#4d0d05);
+    color:#fffaf0; border:1px solid #d2a34c; text-decoration:none; font-weight:700;
+    box-shadow:0 7px 16px rgba(76,19,5,.20); z-index:10;
   }
-  #tales-of-tail { padding-bottom: 58px !important; }
+  #tales-of-tail { padding-bottom:58px !important; }
   .doner-list-link {
-    display:block;
-    width:100%;
-    max-width:420px;
-    margin:18px auto 0;
-    text-decoration:none;
-    text-align:center;
-    background:#fffdf7;
-    border:1px solid #ddc18c;
-    border-radius:14px;
-    padding:10px;
+    display:block; width:100%; max-width:420px; margin:18px auto 0;
+    text-decoration:none; text-align:center; background:#fffdf7;
+    border:1px solid #ddc18c; border-radius:14px; padding:10px;
     box-shadow:0 7px 20px rgba(61,31,12,.10);
   }
-  .doner-list-link img {
-    display:block;
-    width:100%;
-    height:auto;
-    border-radius:10px;
-    border:1px solid #c79545;
-  }
-  .doner-list-link span {
-    display:block;
-    margin-top:8px;
-    color:#704719;
-    font-weight:700;
-  }
+  .doner-list-link img { display:block; width:100%; height:auto; border-radius:10px; border:1px solid #c79545; }
+  .doner-list-link span { display:block; margin-top:8px; color:#704719; font-weight:700; }
   @media(max-width:700px){
-    #tales-of-tail .rescue-story-back-top {
-      right:10px;
-      bottom:10px;
-      min-width:105px;
-      font-size:13px;
-      padding:8px 11px;
-    }
+    #tales-of-tail .rescue-story-back-top { right:10px; bottom:10px; min-width:105px; font-size:13px; padding:8px 11px; }
+  }
+
+  /* Transparent running financial-support message — fixed just above footer */
+  .financial-support-float {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 110px;
+    z-index: 9998;
+    width: 100%;
+    overflow: hidden;
+    pointer-events: auto;
+    white-space: nowrap;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(17px, 2vw, 25px);
+    font-weight: 700;
+    line-height: 1.4;
+    text-align: center;
+    color: rgba(170, 0, 0, 0.88);
+    text-shadow: 0 1px 3px rgba(255,255,255,.95), 0 1px 2px rgba(0,0,0,.2);
+    cursor: pointer;
+  }
+  .financial-support-float .support-marquee {
+    display: inline-flex;
+    width: max-content;
+    animation: supportMarquee 18s linear infinite;
+  }
+  .financial-support-float .support-marquee a {
+    display: inline-block;
+    color: inherit;
+    text-decoration: none;
+    padding-right: 90px;
+    cursor: pointer;
+  }
+  .financial-support-float .support-marquee a:hover {
+    color: #b30000;
+    text-decoration: underline;
+  }
+  @keyframes supportMarquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @media (max-width: 600px) {
+    .financial-support-float { bottom: 90px; font-size: 16px; }
+    .financial-support-float .support-marquee { animation-duration: 15s; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .financial-support-float .support-marquee { animation: none; }
   }
 </style>
-
 <script>
 (function(){
   function addRequestedLinks(){
     const tales = document.querySelector('#tales-of-tail');
     if (tales) {
-      const cards = tales.querySelectorAll('.tale-card');
-      const targets = ['SC.pdf','CS.pdf','SM.pdf'];
-      const images = ['SC.jpg','CS2.jpg','SM.jpg'];
-
-      cards.forEach((card, i) => {
-        if (i < 3) {
-          let a = card.querySelector('a');
-          if (!a) {
-            a = document.createElement('a');
-            card.appendChild(a);
-          }
-          a.href = targets[i];
-          a.target = '_blank';
-          a.rel = 'noopener';
-          const img = card.querySelector('img');
-          if (img) img.src = images[i];
-        }
-      });
-
+      const grid = tales.querySelector('.tale-grid');
+      if (grid) {
+        const newStories = [
+          { image:'Angul.jpg', pdf:'Angul.pdf', title:'Angul', description:'A personal journey from Angul and the beginning of a lifelong connection with animals and compassionate service.' },
+          { image:'Visakhapatnam.jpg', pdf:'Visakhapatnam.pdf', title:'Visakhapatnam', description:'A memorable chapter of life, work and experiences from Visakhapatnam.' }
+        ];
+        newStories.forEach(function(story){
+          const exists = Array.from(grid.querySelectorAll('.tale-card a')).some(function(a){ return a.getAttribute('href') === story.pdf; });
+          if (exists) return;
+          const card = document.createElement('article');
+          card.className = 'tale-card';
+          card.innerHTML = '<a href="'+story.pdf+'" target="_blank" rel="noopener noreferrer" aria-label="Read the '+story.title+' story">' +
+            '<img src="'+story.image+'" alt="'+story.title+' — Rescue Stories">' +
+            '<h3>'+story.title+'</h3>' +
+            '<p>'+story.description+'</p>' +
+            '<span class="tale-read">📖 Read the Story</span></a>';
+          grid.appendChild(card);
+        });
+      }
       if (!tales.querySelector('.rescue-story-back-top')) {
         const b = document.createElement('a');
-        b.className = 'rescue-story-back-top';
-        b.href = '#top';
-        b.textContent = '↑ Back to Top';
-        tales.appendChild(b);
+        b.className='rescue-story-back-top'; b.href='#top'; b.textContent='↑ Back to Top'; tales.appendChild(b);
       }
     }
 
     const appeal = document.querySelector('#appeal');
-    if (appeal && !appeal.querySelector('.doner-list-link')) {
-      const a = document.createElement('a');
-      a.className = 'doner-list-link';
-      a.href = 'Doner.pdf';
-      a.target = '_blank';
-      a.rel = 'noopener';
-      a.innerHTML = '<img src="Doner List.jpg" alt="Doner List"><span>View Doner List</span>';
-      appeal.appendChild(a);
+    if (appeal) {
+      let a = appeal.querySelector('.doner-list-link');
+      if (!a) {
+        a=document.createElement('a'); a.className='doner-list-link';
+        a.target='_blank'; a.rel='noopener';
+        a.innerHTML='<img src="Doner List.jpg" alt="Doner List"><span>View Doner List</span>';
+        appeal.appendChild(a);
+      }
+      // Doner List.jpg must open ONLY DonerList.pdf.
+      a.href='DonerList.pdf';
     }
   }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', addRequestedLinks);
-  } else {
-    addRequestedLinks();
-  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', addRequestedLinks);
+  else addRequestedLinks();
 })();
 </script>
 <!-- REQUESTED RESCUE STORIES / DONER LIST UPDATE END -->
+
+<!-- FINANCIAL SUPPORT FLOATING MESSAGE START -->
+<div class="financial-support-float" role="note" aria-label="Financial support appeal">
+  <div class="support-marquee">
+    <a class="dynamic-nav" data-page="help" href="#help" aria-label="Go to Way to Help">🙏 I Humbly and Sincerely Seek Your Financial Support Through December 2026. 🙏</a>
+    <a class="dynamic-nav" data-page="help" href="#help" aria-label="Go to Way to Help">🙏 I Humbly and Sincerely Seek Your Financial Support Through December 2026. 🙏</a>
+  </div>
+</div>
+<!-- FINANCIAL SUPPORT FLOATING MESSAGE END -->
 </body>
 </html>
