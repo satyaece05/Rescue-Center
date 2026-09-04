@@ -2722,6 +2722,129 @@ body::before{
 }
 </style>
 
+
+<style id="actual-financial-support-tricolor">
+.financial-support-float .support-marquee,
+.financial-support-float .support-marquee a {
+  font-family: "Segoe Script", "Brush Script MT", "URW Chancery L", cursive !important;
+  font-weight: 900 !important;
+  text-shadow: none !important;
+  background: linear-gradient(to bottom, #ff9933 0%, #ff9933 33.33%, #ffffff 33.33%, #ffffff 66.66%, #138808 66.66%, #138808 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+.financial-support-float .support-marquee a:hover {
+  text-decoration: underline;
+}
+</style>
+
+
+<style id="final-running-message-style">
+.financial-support-float,
+.financial-support-float .support-marquee,
+.financial-support-float .support-marquee a {
+  font-family: "Times New Roman", Times, serif !important;
+  font-weight: 700 !important;
+  color: #0000ff !important;
+  -webkit-text-fill-color: #0000ff !important;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  text-shadow: none !important;
+}
+.financial-support-float .support-marquee a:hover {
+  color: #0000ff !important;
+  -webkit-text-fill-color: #0000ff !important;
+}
+#vision {
+  position: relative !important;
+  padding-bottom: 76px !important;
+}
+#vision .vision-pdf-hand {
+  position: absolute !important;
+  right: 18px !important;
+  bottom: 16px !important;
+  z-index: 99999 !important;
+  width: 52px !important;
+  height: 52px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
+  background: #fff8d8 !important;
+  border: 2px solid #a96b17 !important;
+  color: #6b2609 !important;
+  -webkit-text-fill-color: #6b2609 !important;
+  font-family: "Segoe UI Symbol", "Noto Sans Symbols 2", sans-serif !important;
+  font-size: 31px !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 12px rgba(70,35,5,.28) !important;
+  pointer-events: auto !important;
+}
+#vision .vision-pdf-hand:hover,
+#vision .vision-pdf-hand:focus {
+  transform: scale(1.08);
+  outline: none;
+}
+@media (max-width:700px) {
+  #vision .vision-pdf-hand {
+    right: 12px !important;
+    bottom: 12px !important;
+    width: 46px !important;
+    height: 46px !important;
+    font-size: 27px !important;
+  }
+}
+</style>
+
+
+<style id="vision-detailed-view-style">
+#vision {
+  position: relative !important;
+  padding-bottom: 68px !important;
+}
+#vision .vision-detailed-view {
+  position: absolute !important;
+  right: 22px !important;
+  bottom: 18px !important;
+  z-index: 99999 !important;
+  display: inline-block !important;
+  padding: 8px 16px !important;
+  border-radius: 8px !important;
+  background: #64170a !important;
+  border: 1px solid #d2a34c !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  font-family: "Times New Roman", Times, serif !important;
+  font-size: 17px !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 10px rgba(50,18,5,.22) !important;
+  pointer-events: auto !important;
+}
+#vision .vision-detailed-view:hover,
+#vision .vision-detailed-view:focus {
+  background: #8d2c10 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  transform: translateY(-2px);
+  outline: none;
+}
+@media (max-width:700px) {
+  #vision .vision-detailed-view {
+    right: 12px !important;
+    bottom: 12px !important;
+    font-size: 15px !important;
+    padding: 7px 12px !important;
+  }
+}
+</style>
+
 </head>
 <body id="top">
 <!-- HEADER: ROW 1 + ROW 2 NAVIGATION -->
@@ -3235,6 +3358,8 @@ body::before{
 <p>I want to plant the seed of compassion in everyone. I want them to care not just about the whole world, but feel responsible for helping those living in pain around them.</p>
 <p>I want them to help both humans, animals and birds. If nothing else, at least give encouragement to people like us.</p>
 <p class="quote">“Make compassion a practical responsibility.”</p>
+<a class="vision-detailed-view" href="./Vision.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open Detailed View of Vision">Detailed View</a>
+
 </article></section>
 </template>
 <template id="tpl-mission"><section class="row dynamic-section" id="mission"><h1 class="row-title">Mission</h1><article class="card">
@@ -3248,6 +3373,8 @@ body::before{
 <p>I want to plant the seed of compassion in everyone. I want them to care not just about the whole world, but feel responsible for helping those living in pain around them.</p>
 <p>I want them to help both humans, animals and birds. If nothing else, at least give encouragement to people like us.</p>
 <p class="quote">“Make compassion a practical responsibility.”</p>
+<a class="vision-detailed-view" href="./Vision.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open Detailed View of Vision">Detailed View</a>
+
 </article></section></template><template id="tpl-help"><section class="row" id="help">
 <h2 class="row-title">How You Can Help</h2>
 <p class="help-intro">
@@ -3642,14 +3769,19 @@ document.addEventListener('DOMContentLoaded', function () {
     background: transparent;
     border: 0;
     box-shadow: none;
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: clamp(17px, 2vw, 25px);
-    font-weight: 700;
+    font-family: "Segoe Script", "Brush Script MT", "URW Chancery L", cursive !important;
+    font-size: clamp(18px, 2vw, 26px) !important;
+    font-weight: 900 !important;
     line-height: 1.4;
     text-align: center;
-    color: rgba(170, 0, 0, 0.88);
-    text-shadow: 0 1px 3px rgba(255,255,255,.95), 0 1px 2px rgba(0,0,0,.2);
+    color: #ff9933 !important;
+    text-shadow: none !important;
     cursor: pointer;
+    background: linear-gradient(to bottom, #ff9933 0%, #ff9933 33.33%, #ffffff 33.33%, #ffffff 66.66%, #138808 66.66%, #138808 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
   }
   .financial-support-float .support-marquee {
     display: inline-flex;
@@ -3736,5 +3868,6 @@ document.addEventListener('DOMContentLoaded', function () {
   </div>
 </div>
 <!-- FINANCIAL SUPPORT FLOATING MESSAGE END -->
+
 </body>
 </html>
