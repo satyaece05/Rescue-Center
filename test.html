@@ -4409,54 +4409,66 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 <style id="rescue-pdf-reader-style">
-  .rescue-pdf-reader-section{
-    width:100%;
-    box-sizing:border-box;
-    margin:0 auto;
-    padding:clamp(10px,2vw,24px);
-  }
-  .pdf-reader-card{
-    width:100%;
-    box-sizing:border-box;
-    background:#fffdf8;
-    border:2px solid #c79545;
-    border-radius:18px;
-    padding:clamp(10px,2vw,20px);
-    box-shadow:0 12px 35px rgba(54,25,8,.16);
-  }
-  .pdf-reader-head{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:16px;
-    margin-bottom:14px;
-    padding:4px 4px 14px;
-    border-bottom:1px solid #ddc18c;
-  }
+  /* Full in-page PDF document renderer — the PDF itself is not opened in a new tab. */
+  .rescue-pdf-reader-section{width:100%;box-sizing:border-box;margin:0 auto;padding:clamp(12px,2.2vw,28px);}
+  .pdf-reader-card{width:100%;box-sizing:border-box;background:#fffdf8;border:2px solid #c79545;border-radius:18px;padding:clamp(10px,2vw,20px);box-shadow:0 12px 35px rgba(54,25,8,.16);}
+  .pdf-reader-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:16px;padding:4px 4px 14px;border-bottom:1px solid #ddc18c;}
   .pdf-reader-title{margin:0;color:#5b1609;font-size:clamp(22px,3vw,34px);}
   .pdf-reader-subtitle{margin:5px 0 0;color:#6d5a47;font-size:14px;}
-  .pdf-reader-back{
-    flex:0 0 auto;border:1px solid #c79545;border-radius:10px;
-    padding:10px 15px;background:#5b1609;color:#fffdf8;font-weight:700;cursor:pointer;
-  }
+  .pdf-reader-back{flex:0 0 auto;border:1px solid #c79545;border-radius:10px;padding:10px 15px;background:#5b1609;color:#fffdf8;font-weight:700;cursor:pointer;transition:.2s;}
   .pdf-reader-back:hover{background:#7d260e;transform:translateY(-1px);}
-  .pdf-reader-frame-wrap{
-    width:100%;height:min(78vh,900px);min-height:520px;
-    overflow:hidden;background:#e9dfd0;border:1px solid #b99663;border-radius:12px;
-  }
-  .pdf-reader-frame-wrap iframe{display:block;width:100%;height:100%;border:0;background:#fff;}
+  .pdf-document{background:#e9dfd0;border:1px solid #b99663;border-radius:12px;padding:clamp(8px,1.5vw,18px);min-height:240px;}
+  .pdf-status{text-align:center;color:#5b1609;font-weight:700;padding:30px 12px;}
+  .pdf-page{display:block;width:min(100%,1000px);height:auto;margin:0 auto 18px;background:#fff;box-shadow:0 5px 20px rgba(40,20,5,.20);border:1px solid #c9b69b;}
+  .pdf-page:last-child{margin-bottom:0;}
+  .pdf-error{padding:25px;text-align:center;color:#7d260e;background:#fff;border:1px solid #d5b58b;border-radius:10px;}
+  .pdf-page-label{text-align:center;font-size:12px;color:#6d5a47;margin:-10px 0 16px;}
   @media(max-width:700px){
     .pdf-reader-head{align-items:stretch;flex-direction:column;}
     .pdf-reader-back{width:100%;}
-    .pdf-reader-frame-wrap{height:72vh;min-height:480px;}
+    .pdf-document{padding:6px;}
+    .pdf-page{margin-bottom:12px;}
   }
 </style>
 <script id="rescue-pdf-embed-script">
 (function(){
+  'use strict';
+  var PDFJS_VERSION='3.11.174';
+  var PDFJS_SRC='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/'+PDFJS_VERSION+'/pdf.min.js';
+  var PDFJS_WORKER='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/'+PDFJS_VERSION+'/pdf.worker.min.js';
+  var pdfJsPromise=null;
+
+  function escapeHtml(value){
+    return String(value).replace(/[&<>"']/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch];});
+  }
   function getPdfTitle(link){
-    var card=link.closest('.tale-card');
+    var card=link && link.closest('.tale-card');
     var heading=card && card.querySelector('h3');
     return heading ? heading.textContent.trim() : 'Rescue Story';
+  }
+  function loadPdfJs(){
+    if(window.pdfjsLib) return Promise.resolve(window.pdfjsLib);
+    if(pdfJsPromise) return pdfJsPromise;
+    pdfJsPromise=new Promise(function(resolve,reject){
+      var existing=document.querySelector('script[data-pdfjs-loader]');
+      if(existing){
+        existing.addEventListener('load',function(){resolve(window.pdfjsLib);});
+        existing.addEventListener('error',reject);
+        return;
+      }
+      var script=document.createElement('script');
+      script.src=PDFJS_SRC;
+      script.async=true;
+      script.dataset.pdfjsLoader='true';
+      script.onload=function(){
+        if(!window.pdfjsLib){reject(new Error('PDF.js failed to load.'));return;}
+        window.pdfjsLib.GlobalWorkerOptions.workerSrc=PDFJS_WORKER;
+        resolve(window.pdfjsLib);
+      };
+      script.onerror=function(){reject(new Error('Unable to load the PDF renderer. Please check the internet connection.'));};
+      document.head.appendChild(script);
+    });
+    return pdfJsPromise;
   }
 
   function showPdf(pdfUrl,title){
@@ -4468,28 +4480,73 @@ document.addEventListener('DOMContentLoaded', function () {
     reader.innerHTML=
       '<div class="pdf-reader-card">'+
         '<div class="pdf-reader-head">'+
-          '<div><h2 class="pdf-reader-title">'+escapeHtml(title)+'</h2>'+
-          '<p class="pdf-reader-subtitle">Rescue Stories • Document Reader</p></div>'+
-          '<button type="button" class="pdf-reader-back" id="rescuePdfBack">← Back to Rescue Stories</button>'+
-        '</div>'+
-        '<div class="pdf-reader-frame-wrap">'+
-          '<iframe title="'+escapeHtml(title)+' PDF" src="'+encodeURI(pdfUrl)+'#toolbar=1&navpanes=0&view=FitH" loading="eager"></iframe>'+
-        '</div>'+
+          '<div><h2 class="pdf-reader-title">'+escapeHtml(title)+'</h2>'+ 
+          '<p class="pdf-reader-subtitle">Rescue Stories • Full document displayed inside this webpage</p></div>'+ 
+          '<button type="button" class="pdf-reader-back" id="rescuePdfBack">← Back to Rescue Stories</button>'+ 
+        '</div>'+ 
+        '<div class="pdf-document" id="pdfDocumentViewer">'+
+          '<div class="pdf-status" id="pdfStatus">Loading the complete document…</div>'+ 
+        '</div>'+ 
       '</div>';
     body.innerHTML='';
     body.classList.remove('default-view');
     body.appendChild(reader);
-    body.scrollTo({top:0,left:0,behavior:'smooth'});
+    body.scrollTop=0;
     window.scrollTo({top:0,left:0,behavior:'smooth'});
-    document.querySelectorAll('.dynamic-nav').forEach(function(link){
-      link.classList.toggle('active',link.dataset.page==='tales-of-tail');
-    });
     var back=document.getElementById('rescuePdfBack');
     if(back) back.addEventListener('click',function(){showPage('tales-of-tail');});
+    renderPdf(pdfUrl);
   }
 
-  function escapeHtml(value){
-    return String(value).replace(/[&<>"']/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch];});
+  function renderPdf(pdfUrl){
+    var container=document.getElementById('pdfDocumentViewer');
+    if(!container) return;
+    loadPdfJs().then(function(pdfjsLib){
+      return pdfjsLib.getDocument(encodeURI(pdfUrl)).promise;
+    }).then(function(pdf){
+      if(!document.getElementById('pdfDocumentViewer')) return;
+      container.innerHTML='';
+      var status=document.createElement('div');
+      status.className='pdf-status';
+      status.textContent='Rendering '+pdf.numPages+' page'+(pdf.numPages===1?'':'s')+'…';
+      container.appendChild(status);
+
+      /* Render every page sequentially so the whole PDF becomes part of the page body. */
+      var pageNumber=1;
+      function nextPage(){
+        if(pageNumber>pdf.numPages){
+          if(status.parentNode) status.parentNode.removeChild(status);
+          return;
+        }
+        var n=pageNumber++;
+        pdf.getPage(n).then(function(page){
+          var baseViewport=page.getViewport({scale:1});
+          var available=Math.max(container.clientWidth-20,280);
+          var scale=available/baseViewport.width;
+          var viewport=page.getViewport({scale:scale});
+          var canvas=document.createElement('canvas');
+          canvas.className='pdf-page';
+          canvas.width=Math.ceil(viewport.width);
+          canvas.height=Math.ceil(viewport.height);
+          canvas.setAttribute('aria-label','PDF page '+n);
+          var ctx=canvas.getContext('2d',{alpha:false});
+          container.appendChild(canvas);
+          var label=document.createElement('div');
+          label.className='pdf-page-label';
+          label.textContent='Page '+n+' of '+pdf.numPages;
+          container.appendChild(label);
+          return page.render({canvasContext:ctx,viewport:viewport}).promise;
+        }).then(nextPage).catch(function(err){
+          var error=document.createElement('div');
+          error.className='pdf-error';
+          error.textContent='Unable to render page '+(n || '')+'. '+err.message;
+          container.appendChild(error);
+        });
+      }
+      nextPage();
+    }).catch(function(err){
+      container.innerHTML='<div class="pdf-error"><strong>Unable to display this PDF inside the webpage.</strong><br><br>'+escapeHtml(err.message||String(err))+'</div>';
+    });
   }
 
   document.addEventListener('click',function(event){
